@@ -230,7 +230,7 @@ class SQLiteSchemaExtractor(object):
         error_message_format = "data not found in '{}' table"
 
         try:
-            table_schema = result.fetchone()[0]
+            table_schema = result.fetchone()[0].replace('\n',' ')
         except TypeError:
             raise DataNotFoundError(error_message_format.format(self._SQLITE_MASTER_TABLE_NAME))
 
